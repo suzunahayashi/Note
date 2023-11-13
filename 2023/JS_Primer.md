@@ -96,7 +96,8 @@
       console.log(num); // => 0
     ```
 
-  - 比較演算子
+  - 比較演算子<br>
+    **※（===）の利用を推奨**
     - 厳密等価演算子（===）
       ```
         console.log(1 === 1); // => true
@@ -131,3 +132,56 @@
         console.log("JavaScript" != "ECMAScript"); // => true
         console.log(true != true);// => false
       ```
+
+  - 論理演算子<br>
+    AND（かつ）、OR（または）、NOT（否定）を表現
+
+    - AND演算子（&&）<br>
+      左辺の値の評価結果がtrueならば、右辺の評価結果を返す<br>
+      左辺の値の評価結果がfalseならば、そのまま左辺の値を返す
+      ```
+        // 左辺はtrueであるため、右辺の評価結果を返す
+        console.log(true && "右辺の値"); // => "右辺の値"
+        // 左辺がfalseであるなら、その時点でfalseを返す
+        // 右辺は評価されない
+        console.log(false && "右辺の値"); // => false
+      ```
+    - OR演算子（||）<br>
+      左辺の値の評価結果がtrueならば、そのまま左辺の値を返す<br>
+      左辺の値の評価結果がfalseであるならば、右辺の評価結果を返す
+      ```
+        // 左辺がtrueなので、左辺の値が返される
+        console.log(true || "右辺の値"); // => true
+        // 左辺がfalseなので、右辺の値が返される
+        console.log(false || "右辺の値"); // => "右辺の値"
+      ```
+    - NOT演算子（!）<br>
+      評価結果がtrueならば、falseを返す<br>
+      評価結果がfalseならば、trueを返す
+      ```
+        console.log(!false); // => true
+        console.log(!true);  // => false
+      ```
+
+### 暗黙的な型変換
+  - 処理の過程でオペランドの型によって、 自動的に変換されること
+  - NaNはNot a Number
+
+### 明示的な型変換
+  - プリミティブ型へ明示的な型変換をする
+  - 数値 → 文字列
+    ```
+      String(1); // => "1"
+    ```
+  - 文字列 → 数値 = Numberコンストラクタ関数
+    ```
+      // ユーザー入力を文字列として受け取る
+      const input = window.prompt("数字を入力してください", "42");
+      // 文字列を数値に変換する
+      const num = Number(input);
+      console.log(typeof num); // => "number"
+      console.log(num); // 入力された文字列を数値に変換したもの
+    ```
+    - 文字列から数字を取り出して変換する関数
+      -  ```Number.parseInt```
+      - ```Number.parseFloat```
