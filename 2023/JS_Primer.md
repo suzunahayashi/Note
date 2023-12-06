@@ -289,3 +289,63 @@
 
 ### オブジェクト
   - :star2: プロパティへのアクセス：どちらかというとドット記法がなじみがあるのですが、住まいルール的に何かあるか
+
+### 配列
+  - Array.prototype.at
+    - 数には相対的なインデックスの値を引数として渡せる
+    ```
+      const array = ["a", "b", "c"];
+      //
+      console.log(array.at(0)); // => "a"
+      console.log(array.at(1)); // => "b"
+      // 後ろから1つ目の要素にアクセス
+      console.log(array.at(-1)); // => "c"
+      // -1は、次のように書いた場合と同じ結果
+      console.log(array[array.length - 1]); // => "c"
+    ```
+
+  - Array.isArray
+    - オブジェクトが配列かどうかを判定
+    - typeof演算子では配列かどうかを判定することはできない
+    ```
+      const obj = {};
+      const array = [];
+      console.log(Array.isArray(obj)); // => false
+      console.log(Array.isArray(array)); // => true
+    ```
+
+  - 配列から要素を検索
+    - findIndex: 異なるオブジェクトだが値は同じものを見つけたい
+    - find: より明確に要素自体が欲しいということを表現するには、Arrayのfindメソッド
+    - findLastIndex: 末尾から検索した結果が得られる
+    - findLast: findの対
+  
+  - 指定範囲の要素を取得
+    - Arrayのsliceメソッド: 第一引数の開始位置から第二引数の終了位置（終了位置の要素は含まない）までの範囲を取り出した新しい配列を返す
+
+  - 破壊的なメソッドと非破壊的なメソッド
+    - https://zenn.dev/cryptobox/articles/ec99edaaa16b7b
+    - 破壊的なメソッド
+      ```
+        Array.prototype.pop	配列の末尾の値
+        Array.prototype.push	変更後の配列のlength
+        Array.prototype.splice	取り除かれた要素を含む配列
+        Array.prototype.reverse	反転した配列
+        Array.prototype.shift	配列の先頭の値
+        Array.prototype.sort	ソートした配列
+        Array.prototype.unshift	変更後の配列のlength
+        Array.prototype.copyWithin[ES2015]	変更後の配列
+        Array.prototype.fill[ES2015]	変更後の配列
+      ```
+
+  - 配列を反復処理するメソッド
+    - forEach: 配列の要素を先頭から順番にコールバック関数へ渡し、反復処理を行うメソッド
+    - map: 配列の要素を順番にコールバック関数へ渡し、コールバック関数が返した値から新しい配列を返す非破壊的なメソッド
+      - 参照: https://zenn.dev/masa9436/articles/f0f22126963e50 <br>
+
+    - filter: 配列の要素を順番にコールバック関数へ渡し、コールバック関数がtrueを返した要素だけを集めた新しい配列を返す非破壊的なメソッド
+    - reduce: 累積値（アキュムレータ）と配列の要素を順番にコールバック関数へ渡し、1つの累積値を返す
+      - 参照: 太刀川さんの記事読む https://qiita.com/ken7253_/items/873a8f482ecdd65e5c9c
+
+
+### 文字列
